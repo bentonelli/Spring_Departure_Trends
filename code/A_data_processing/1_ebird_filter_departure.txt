@@ -1,0 +1,19 @@
+
+# Instructions for downloading, filtering eBird data
+# The first step of this analysis involves downloading the most recent version of the global eBird dataset.
+
+# Once expanded, the .txt file should be saved on a cluster environment. 
+
+# Each of the following steps takes time and considerable computing power, so we recommend running each line individually to make sure each step proceeds as intended before moving onto the next step.
+
+# Check column names
+awk 'NR==1{print; exit}' ebd_relMay-2025.txt
+
+#Colfilt - update here based on eBird version 1.16 and updated to only get columns needed for 
+
+awk -F '\t' 'BEGIN { OFS="|" } { print $4, $6, $11, $29, $30, $31, $35, $36, $41, $42, $45, $46 }' ebd_relMay-2025.txt > ebd_relMay-2025_apd_colfilt.txt
+
+#Save: 1. Category; 2. Common Name; 3. Observation Count; 4. Latitude; 5. Longitude; 6. Observation Date; 7. Sampling Event Identifier; 8. Observation Type; 9. Duration Minutes; 10. Effort Distance KM; 11. All Species Reported; 12. Group Identifier
+
+#Split by year
+awk -F '|' 'BEGIN { OFS="|" } { $1=$1 } 1 { if ((NR==1) || (($8 == "Traveling" || $8 == "Stationary") && ($9 > 5 && $9 <= 1440) && ($10 < 100) && ($11 == 1))) { print > ("/scratch/btonell/year_files/" substr($6,1,4) "_all.txt") } }' /scratch/btonell/ebd_relMay-2025_apd_colfilt.txt
