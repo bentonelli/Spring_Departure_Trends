@@ -713,10 +713,9 @@ grid_elev_bands_rp <- st_transform(grid_elev_bands,
 
 grid_elev_bands_rp$log10_count <- log10(grid_elev_bands_rp$count)
 
-#bird_cols <- bird_colors("Cassin's Finch",expand_palette = 10)[5:10]
 bird_cols <- bird_colors("Variable Sunbird",reverse = F,expand_palette = 100)[1:80]
 
-# Plot with geom_sf (simplest approach)
+# Plot with geom_sf
 ggplot(grid_elev_bands_rp) +
   geom_sf(data = world_rp, fill = country_col, color = country_outline_col, size = 0.1) +
   geom_sf(aes(fill = count), color = "transparent", size = 0.2) +

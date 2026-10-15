@@ -2,7 +2,9 @@
 
 Code for Tonelli et al., submitted 2026
 
-This repository accompanies the manuscript: Biogeographic divergence in avian pre-breeding migratory onset in response to climate change
+This repository accompanies the manuscript: A temperate-tropical divide in climate-driven changes to avian spring migration departure timing.
+
+Please  contact btonell [at] clemson [dot] edu with questions.
 
 **Repository structure:**
 
@@ -32,14 +34,15 @@ This repository accompanies the manuscript: Biogeographic divergence in avian pr
       * `16_pop_sensitivity_maps.R` Create Fig. 2, S1, S2
       * `17_sp_sens_climate.R` Create Fig. 3.
       * `18_projection_plots.R` Create Fig. 4.
-      * `19_var_exp_migration_distance.R` Fig. S3.
-      * `20_temp_precip_change.R` Fig. S4.
-      * `21_PPC.R` Fig. S5.
-      * `22_cat_plots.R` Fig. S6.
+      * `19_climate correlation.R` Get climatic connectivity metrics for Fig. S3
+      * `20_var_exp_climate_connectivity.R` Fig. S3.
+      * `21_temp_precip_change.R` Fig. S4.
+      * `22_PPC.R` Fig. S5.
+      * `23_cat_plots.R` Fig. S6.
   * `data/` (See Zenodo)
       * `input/`
         * `elevation/` - Location for GMTED 2010 Elevation model, .tif format. https://www.usgs.gov/coastal-changes-and-impacts/gmted2010
-        * `environmental/`
+        * `environmental/` - Environmental data.
           * `climate_projections/` - Climate projections for 3 CMIP6 climate models, split by scenario and environmental covariate. Available via: https://cds.climate.copernicus.eu/
             * `CESM2/`
               * `precip/`
@@ -68,6 +71,7 @@ This repository accompanies the manuscript: Biogeographic divergence in avian pr
                 * `SSP1_2p6/`
                 * `SSP2_4p5/`
                 * `SSP3_7p0/`
+              * `temp_may_global.nc` - May temperature averages for climatic connectivity 2002-2024. From ERA5
           * `ERA5/` - Historical climate data, saved as monthly .nc files (e.g. temp_2024_12.nc)
           * `intermediate_precip/` - Storage for intermediate precipitation data created during processing
           * `intermediate_temp/` - Storage for intermediate temperature data created during processing
@@ -77,7 +81,7 @@ This repository accompanies the manuscript: Biogeographic divergence in avian pr
           * `phenometrics_cell_yr_files/` - GAM fits, by species, year
           * `report_cards/` - Migratory species lists, by year
           * `zf_files/` - Zero-filled eBird files
-        * `spatial/` - Polygons of areas
+        * `spatial/` - Polygons of areas, polygons of breeding ranges
       * `output/` - Model outputs, downstream analyses outputs
         * `departure_model/` - Fit model object and diagnostics
         * `departure_projections/` - Departure and climate projections by population, model/scenario
