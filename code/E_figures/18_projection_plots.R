@@ -92,9 +92,7 @@ pp1a <- ggplot(sp_targ_long_all) +
   scale_x_continuous(
     limits = xlim_all,
     breaks = seq(2015, 2100, by = 5),
-    expand=c(0,0)
-  ) +
-  ylim(-10,6)+ 
+    expand=c(0,0)) +
   scale_linewidth_manual(values=c(.5,2.25),guide="none") +
   scale_alpha_manual(values=c(.25,.9),guide="none") + 
   scale_color_manual(values = sp_plot_col)+
@@ -109,7 +107,7 @@ pp1a <- ggplot(sp_targ_long_all) +
         axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank()) + 
-  coord_cartesian(xlim = xlim_all, ylim = c(-10, 6), clip = "on")
+  coord_cartesian(xlim = xlim_all, ylim = c(-11, 7))
 ggsave("plot1a.pdf", plot = pp1a, width = export_size_x, height = export_size_y, units = "in")   
 
 pp1b <- ggplot(sp_targ_long_all) +
@@ -125,7 +123,6 @@ pp1b <- ggplot(sp_targ_long_all) +
     labels = function(x) paste0(x-4, "-", x),
     expand=c(0,0)
   ) +
-  ylim(-10,6)+ 
   scale_linewidth_manual(values=c(.5,2.25),guide="none") +
   scale_alpha_manual(values=c(.25,.9),guide="none") + 
   scale_color_manual(values = sp_plot_col)+
@@ -140,7 +137,7 @@ pp1b <- ggplot(sp_targ_long_all) +
         axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank()) + 
-  coord_cartesian(xlim = xlim_all, ylim = c(-10, 6), clip = "on")
+  coord_cartesian(xlim = xlim_all, ylim = c(-11, 7))
 ggsave("plot1b.pdf", plot = pp1b, width = export_size_x, height = export_size_y, units = "in")   
 
 ### Plot 2 - Ensemble forecast across species ####
@@ -204,7 +201,6 @@ pp2 <- ggplot()+
   labs(col="Latitude (abs)") +
   geom_segment(data=quantile_segments,aes(x=year-2,xend=year+2,y=q10),lwd=1.25,col=alpha(bcs_quantiles[2],.9))+
   geom_segment(data=quantile_segments,aes(x=year-2,xend=year+2,y=q90),lwd=1.25,col=alpha(bcs_quantiles[2],.9))+
-  ylim(-10,6)+ 
   ylab("Departure Date Change (days)")+
   xlab("Year") +
   scale_x_continuous(
@@ -222,7 +218,7 @@ pp2 <- ggplot()+
         axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank()) + 
-  coord_cartesian(xlim = xlim_all, ylim = c(-10, 6), clip = "on")
+  coord_cartesian(xlim = xlim_all, ylim = c(-11, 7))
 ggsave("plot2.pdf", plot = pp2, width = export_size_x, height = export_size_y, units = "in")   
 
 ### Plot 3, SD change across three SSP scenarios ####
@@ -284,7 +280,6 @@ pp3 <- ggplot()+
   geom_segment(data = quantile_segments_all,aes(x=year-2,xend=year+2,y=q90,color = as.factor(scenario)),lwd=1.25)+
   scale_color_manual(values=bcs_quantiles)+
   labs(col = "Scenario") +
-  ylim(-10,6)+ 
   ylab("Departure Date Change (days)")+
   xlab("Year") + 
   scale_x_continuous(
@@ -301,6 +296,7 @@ pp3 <- ggplot()+
         legend.background = element_rect(fill=alpha("transparent")),
         axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank())
+        panel.grid.minor = element_blank()) +
+  coord_cartesian(xlim = xlim_all, ylim = c(-11, 7))
 ggsave("plot3.pdf", plot = pp3, width = export_size_x, height = export_size_y, units = "in")   
 
