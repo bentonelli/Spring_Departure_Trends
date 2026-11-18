@@ -1,6 +1,6 @@
 # Spring_Departure
 
-Code for Tonelli et al., submitted 2026
+Code for Tonelli et al., Nature Ecol. Evol.
 
 This repository accompanies the manuscript: A temperate-tropical divide in climate-driven changes to avian spring migration departure timing.
 
